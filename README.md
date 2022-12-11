@@ -2,7 +2,7 @@ English | [中文](./README_cn.md)
 
 # Sorting music files by their albums
 
-This script will move music files belonging to the same album to directories named after their album names, directories that do not exist will be created. The script parses the album information contained in the file's metadata and handles special characters that are not suitable for inclusion in the path.
+This script will move music files belonging to the same album to directories named after their album names, directories that do not exist will be created. The script parses the album information contained in the file's metadata and handles special characters that are not suitable for inclusion in the path. A directory will only be created if there are at least 3 files belong to the same album.
 
 **Important**:
 

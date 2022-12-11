@@ -4,7 +4,7 @@ import os
 import glob
 import sys
 
-MIN_ALBUM_SONGS = 6
+MIN_ALBUM_SONGS = 3
 FILE_EXTENTION = ['mp3', 'flac']
 
 
