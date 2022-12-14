@@ -21,6 +21,7 @@ if __name__ == '__main__':
         exit()
 
     album_files: dict[str, list[str]] = {}
+    count_skip = 0
     count_mv = 0
     count_mkdir = 0
 
@@ -42,27 +43,23 @@ if __name__ == '__main__':
 
     for album, files in album_files.items():
         if len(files) < MIN_ALBUM_FILES:
-            print('Skipping album "%s",' % album)
-            print('because it has less than %d files. count = %d' %
-                  (MIN_ALBUM_FILES, len(files)))
-            print()
+            count_skip += len(files)
             continue
 
         # Create the directory for the album, if it doesn't already exist
         album_dir = os.path.join(music_dir, convert_to_valid_dirname(album))
         if not os.path.exists(album_dir):
-            print('Creating directory: "%s"' % album_dir)
             os.makedirs(album_dir)
             count_mkdir += 1
 
         # Move the file to the album directory
         for file in files:
-            print('Moving file "%s" to directory "%s"' % (file, album_dir))
             os.rename(os.path.join(music_dir, file),
                       os.path.join(album_dir, file))
             count_mv += 1
 
     # summarize
-    print('===== Summarize =====')
-    print('Number of created directories: %d' % count_mkdir)
-    print('Number of files moved: %d' % count_mv)
+    print('===== summarize =====')
+    print('skipped files:', count_skip)
+    print('created directories:', count_mkdir)
+    print('moved files:', count_mv)
