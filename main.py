@@ -10,7 +10,7 @@ AUDIO_EXTENTIONS = ('mp3', 'flac')
 def convert_to_valid_dirname(s: str):
     for c in ':\\/*?"<>|':
         s = s.replace(c, '_')
-    s.strip()
+    return s.strip()
 
 
 if __name__ == '__main__':
